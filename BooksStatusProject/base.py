@@ -2,7 +2,7 @@
 # coding: utf-8
 import os
 
-books_file_name = "D:\CmdDevelop\BooksStatusProject\BooksStatusData"
+books_file_name = os.path.join(os.path.dirname(__file__), 'BooksStatusData')
 base_id = 10000
 
 

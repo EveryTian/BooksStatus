@@ -1,5 +1,5 @@
 @echo off
-set FolderPath=D:\CmdDevelop\BooksStatusProject
+set FolderPath=%~DP0BooksStatusProject
 if [%1] == [] (
 	python "%FolderPath%\show.py"
 	goto :eof

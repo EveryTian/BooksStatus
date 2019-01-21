@@ -1,4 +1,9 @@
 #!/bin/sh
+BooksStatusFolder=.  # Please replace with absolute path
+cd $BooksStatusFolder || (echo "Please specify BooksStatusFolder in BooksStatus/books first." && exit)
+if [ ! -d "BooksStatusProject" ] || [ ! -f "books.py" ]; then
+  echo "Please specify BooksStatusFolder in BooksStatus/books first." && exit
+fi
 if [ $# -eq 0 ]; then
   python3 books.py
 else

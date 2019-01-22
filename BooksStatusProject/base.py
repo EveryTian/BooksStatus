@@ -16,10 +16,11 @@ def read():
     while lines.count(['']) != 0:
         lines.remove([''])
     return [{
+        'id': base_id + 1 + i,
         'book_name': line[0],
         'book_page': line[1],
         'current_page': line[2]
-    } for line in lines]
+    } for i, line in enumerate(lines)]
 
 
 def write(book_status):

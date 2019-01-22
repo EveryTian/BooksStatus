@@ -16,8 +16,8 @@ help_info = """Usage <Case Insensitive>:
 By: EveryTian (haotian_ren@outlook.com)"""
 python_cmd_prefix = "python3"
 folder_path = os.path.join(os.path.dirname(__file__), 'BooksStatusProject')
-args = os.sys.argv
-args_lenth = len(args)
+args = list(filter(lambda x: x != '""' and x != '', os.sys.argv))
+args_length = len(args)
 
 
 def get_file_path(file_name):
@@ -28,15 +28,21 @@ def cmd_show():
     return True
 
 def cmd_add():
-    if args_lenth < 4:
+    if args_length < 4:
         return False
     os.system(' '.join((python_cmd_prefix, get_file_path('add.py'), args[2], args[3])))
     return True
 
 def cmd_read():
-    if args_lenth < 4:
+    if args_length < 4:
         return False
     os.system(' '.join((python_cmd_prefix, get_file_path('read.py'), args[2], args[3])))
+    return True
+
+def cmd_delete():
+    if args_length < 3:
+        return False
+    os.system(' '.join((python_cmd_prefix, get_file_path('delete.py'), args[2])))
     return True
 
 def cmd_help():
@@ -44,7 +50,7 @@ def cmd_help():
     return True
 
 if __name__ == '__main__':
-    if args_lenth < 2:
+    if args_length < 2:
         cmd_show()
     else:
         argv1 = args[1].lower()
@@ -58,6 +64,9 @@ if __name__ == '__main__':
                 '-r': cmd_read,
                 '--read': cmd_read,
                 'read': cmd_read,
+                '-d': cmd_delete,
+                '--delete': cmd_delete,
+                'delete': cmd_delete,
                 '-h': cmd_help,
                 '--help': cmd_help,
                 'help': cmd_help,

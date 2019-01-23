@@ -18,6 +18,8 @@ if %help_option% == 1 (
     echo      -^> [Update Book's Status]
     echo   %0 -a/--add/add ^<BookName^> ^<BookPagesNumber^>
     echo      -^> [Add New Book]
+    echo   %0 -d/--delete/delete ^<BookSerialNumber^>
+    echo      -^> [Delete Book]
     echo By: EveryTian ^(haotian_ren@outlook.com^)
     goto :eof
 )
@@ -43,6 +45,18 @@ if %add_option% == 1 (
     )
     goto :eof
 )
+if "%argv1%" == "-d" (set /a delete_option1 = 1) else (set /a delete_option1 = 0)
+if "%argv1%" == "--delete" (set /a delete_option2 = 1) else (set /a delete_option2 = 0)
+if "%argv1%" == "delete" (set /a delete_option3 = 1) else (set /a delete_option3 = 0)
+set /a delete_option = delete_option1 "|" delete_option2 "|" delete_option3
+if %delete_option% == 1 (
+    if [%2] == [] (
+        %0 --help
+    ) else (
+        python "%FolderPath%\delete.py" %2
+    )
+    goto :eof
+)
 if "%argv1%" == "-r" (set /a read_option1 = 1) else (set /a read_option1 = 0)
 if "%argv1%" == "--read" (set /a read_option2 = 1) else (set /a read_option2 = 0)
 if "%argv1%" == "read" (set /a read_option3 = 1) else (set /a read_option3 = 0)
@@ -65,7 +79,6 @@ if [%1] == [] (
     python "%FolderPath%\read.py" %1 %2
 )
 goto :eof
-
 :DOWNCASE
 SET "UP=A B C D E F G H I J K L M N O P Q R S T U V W X Y Z"
 SET "DOWN=a b c d e f g h i j k l m n o p q r s t u v w x y z"

@@ -13,6 +13,8 @@ help_info = """Usage <Case Insensitive>:
      -> [Update Book's Status]
   books -a/--add/add <BookName> <BookPagesNumber>
      -> [Add New Book]
+  books -d/--delete/delete <BookSerialNumber>
+     -> [Delete Book]
 By: EveryTian (haotian_ren@outlook.com)"""
 python_cmd_prefix = "python3"
 folder_path = os.path.join(os.path.dirname(__file__), 'BooksStatusProject')
@@ -38,6 +40,12 @@ def cmd_read():
         return False
     os.system(' '.join((python_cmd_prefix, get_file_path('read.py'), args[2], args[3])))
     return True
+
+def cmd_read_short():
+    global args_length
+    args.insert(1, '-r') 
+    args_length += 1
+    return cmd_read()
 
 def cmd_delete():
     if args_length < 3:
@@ -71,6 +79,6 @@ if __name__ == '__main__':
                 '--help': cmd_help,
                 'help': cmd_help,
         }
-        if not argv1_map.get(argv1, lambda: False)():
+        if not argv1_map.get(argv1, cmd_read_short)():
             cmd_help()
 

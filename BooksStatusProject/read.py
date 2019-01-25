@@ -26,13 +26,23 @@ def read():
         return
     status = base.read()
     if book_id - base.base_id > len(status):
-        print("Book id", book_id, "not exist.")
+        print('Book id', book_id, 'not exist.')
         return
-    if int(status[book_id - base.base_id - 1]['book_page']) < current_page:
-        print("Incorrect page.")
+    book_status = status[book_id - base.base_id - 1]
+    book_page_str = book_status['book_page']
+    if int(book_page_str) < current_page:
+        print('Incorrect page.')
         return
-    status[book_id - base.base_id - 1]['current_page'] = str(current_page)
+    current_page_str = str(current_page)
+    origin_page_str = book_status['current_page']
+    book_status['current_page'] = current_page_str
+    book_name = book_status['book_name']
     base.write(status)
+    print("Updated: %s %s/%s->%s/%s" % (
+        book_name,
+        origin_page_str, book_page_str,
+        current_page_str, book_page_str
+    ))
 
 
 if __name__ == '__main__':

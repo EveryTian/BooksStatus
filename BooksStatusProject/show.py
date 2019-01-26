@@ -6,6 +6,8 @@ import base
 
 def show():
     status = base.read()
+    if status == []:
+        print("No books. Use '--add' option to add a book.")
     i = base.base_id + 1
     for book in status:
         percent_info = "%3d%%" % (

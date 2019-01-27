@@ -3,11 +3,9 @@
 import os
 import platform
 
-books_file_name = os.path.join(os.path.dirname(__file__), 'BooksStatusData')
+books_file_name = os.path.join(os.path.expanduser('~'), '.BooksStatusData')
 base_id = 10000
 
-if platform.platform()[:7].lower() != 'windows':
-    books_file_name = os.path.expanduser('~/.BooksStatusData')
 
 def read():
     mode = 'r'

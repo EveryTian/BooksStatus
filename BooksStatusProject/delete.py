@@ -1,5 +1,10 @@
-#! python3
+#!python
 # coding: utf-8
+
+from __future__ import print_function
+from __future__ import unicode_literals
+from __future__ import absolute_import
+from __future__ import division
 
 from sys import argv
 import base
@@ -20,9 +25,13 @@ def delete():
         print('Book id', book_id, 'not exist.')
         return
     deleted_book = status.pop(book_id - base.base_id - 1)
+    try:
+        input = raw_input
+    except NameError as e:
+        pass
     if input("Delete item:\n  %s %s/%s\nSure? (Y/else) " % (
-        deleted_book['book_name'], deleted_book['current_page'], deleted_book['book_page'])
-    ) == 'Y':
+        deleted_book['book_name'], deleted_book['current_page'], deleted_book['book_page']
+    )) == 'Y':
         base.write(status)
         print('Deleted.')
     else:

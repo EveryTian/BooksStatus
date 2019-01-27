@@ -9,6 +9,10 @@ from __future__ import division
 from sys import argv
 import base
 
+try:
+    input = raw_input
+except NameError as e:
+    pass
 
 def delete():
     book_id = base.base_id
@@ -25,10 +29,6 @@ def delete():
         print('Book id', book_id, 'not exist.')
         return
     deleted_book = status.pop(book_id - base.base_id - 1)
-    try:
-        input = raw_input
-    except NameError as e:
-        pass
     if input("Delete item:\n  %s %s/%s\nSure? (Y/else) " % (
         deleted_book['book_name'], deleted_book['current_page'], deleted_book['book_page']
     )) == 'Y':

@@ -1,4 +1,4 @@
-#! python3
+#!python
 # coding: utf-8
 import os
 import platform

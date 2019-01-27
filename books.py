@@ -1,4 +1,4 @@
-#! python3
+#!python
 # coding: utf-8
 
 import os
@@ -16,7 +16,7 @@ help_info = """Usage <Case Insensitive>:
   books -d/--delete/delete <BookSerialNumber>
      -> [Delete Book]
 By: EveryTian (haotian_ren@outlook.com)"""
-python_cmd_prefix = "python3"
+python_cmd_prefix = "python"
 folder_path = os.path.join(os.path.dirname(__file__), 'BooksStatusProject')
 args = list(filter(lambda x: x != '""' and x != '', os.sys.argv))
 args_length = len(args)

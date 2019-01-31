@@ -1,9 +1,9 @@
 #!/bin/sh
-BooksStatusFolder=.  # Please replace with absolute path
+BooksStatusFolder=.  # Please replace with the absolute path
 python_cmd_prefix=python
 cd $BooksStatusFolder || (echo "Please specify BooksStatusFolder in BooksStatus/books first." && exit)
 if [ ! -d "BooksStatusProject" ] || [ ! -f "books.py" ]; then
-  echo "Please specify BooksStatusFolder in BooksStatus/books first." && exit
+  echo "Please specify BooksStatusFolder in $0 (Line 2) first." && exit
 fi
 if [ $# -eq 0 ]; then
   $python_cmd_prefix books.py

@@ -1,6 +1,12 @@
 @echo off
+set BooksStatusFolder=%CD%
+:: Please replace with the absolute path
 set python_cmd_prefix=python
-set FolderPath=%~DP0BooksStatusProject
+set FolderPath=%BooksStatusFolder%\BooksStatusProject
+if not exist %FolderPath% (
+    echo Please specify BooksStatusFolder in %~F0 ^(Line 2^) first.
+    goto :eof
+)
 if [%1] == [] (
     %python_cmd_prefix% "%FolderPath%\show.py"
     goto :eof

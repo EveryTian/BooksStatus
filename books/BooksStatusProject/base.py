@@ -37,5 +37,5 @@ def get_data_file_path():
 
 
 def get_project_folder_path():
-    return os.path.dirname(__file__)
+    return os.path.dirname(os.path.dirname(__file__))
 

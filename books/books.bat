@@ -1,6 +1,6 @@
 @echo off
 set BooksStatusFolder=%CD%
-:: Please replace with the absolute path
+:: Please replace with the absolute path ######
 set python_cmd_prefix=python
 set FolderPath=%BooksStatusFolder%\BooksStatusProject
 if not exist %FolderPath% (

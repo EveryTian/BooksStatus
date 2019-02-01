@@ -29,9 +29,14 @@ def delete():
         print('Book id', book_id, 'not exist.')
         return
     deleted_book = status.pop(book_id - base.base_id - 1)
-    if input("Delete item:\n  %s %s/%s\nSure? (Y/else) " % (
-        deleted_book['book_name'], deleted_book['current_page'], deleted_book['book_page']
-    )) == 'Y':
+    try:
+        affirmative = input("Delete item:\n  %s %s/%s\nSure? (Y/else) " % (
+            deleted_book['book_name'], deleted_book['current_page'], deleted_book['book_page']
+        ))
+    except KeyboardInterrupt:
+        print('\nCanceled.')
+        return
+    if affirmative == 'Y':
         base.write(status)
         print('Deleted.')
     else:

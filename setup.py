@@ -6,7 +6,7 @@ is_windows = platform.platform()[:3].lower() == 'win'
 
 setup(
     name='books',
-    # version='0.1',
+    version='1.0',
     description='CLI Reading Progress Management',
     url='https://github.com/EveryTian/BooksStatus',
     packages=find_packages(),
